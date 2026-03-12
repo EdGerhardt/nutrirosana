@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Área de Membros – Nutri Rosana</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FFF8F0;
+    --warm: #FFF1E0;
+    --primary: #C85A2A;
+    --primary-dark: #A04520;
+    --secondary: #E8914A;
+    --gold: #D4A847;
+    --green: #5A8A4A;
+    --green-light: #EAF3E6;
+    --purple: #7B4FA0;
+    --purple-light: #F3ECF9;
+    --blue: #2A6FA8;
+    --blue-light: #E6F0FA;
+    --rose: #C85A7A;
+    --rose-light: #FAEEF2;
+    --text: #2D1F14;
+    --text-mid: #6B4C33;
+    --text-light: #A07855;
+    --card-bg: #FFFFFF;
+    --shadow: 0 4px 24px rgba(45,31,20,0.10);
+    --shadow-hover: 0 12px 40px rgba(45,31,20,0.18);
+    --radius: 20px;
+    --radius-sm: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ─────────────────────────────── */
+  header {
+    background: linear-gradient(135deg, #2D1F14 0%, #5A2A0A 50%, #A04520 100%);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(45,31,20,0.4);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-icon {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--secondary), var(--gold));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 10px rgba(212,168,71,0.4);
+  }
+  .logo-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.1;
+    font-weight: 700;
+  }
+  .logo-text span {
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .header-badge {
+    background: linear-gradient(135deg, var(--gold), var(--secondary));
+    color: #2D1F14;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  /* ── HERO ────────────────────────────────── */
+  .hero {
+    background: linear-gradient(135deg, #5A2A0A 0%, #A04520 40%, #C85A2A 70%, #E8914A 100%);
+    padding: 40px 20px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: rgba(212,168,71,0.15);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(212,168,71,0.25);
+    color: var(--gold);
+    border: 1px solid rgba(212,168,71,0.4);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 50px;
+    margin-bottom: 14px;
+  }
+  .hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 6vw, 38px);
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    font-weight: 900;
+  }
+  .hero h2 em { color: var(--gold); font-style: italic; }
+  .hero p {
+    color: rgba(255,255,255,0.82);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .stat {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 14px;
+    padding: 12px 20px;
+    text-align: center;
+    min-width: 80px;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  /* ── SEARCH ──────────────────────────────── */
+  .search-section {
+    background: var(--card-bg);
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(200,90,42,0.1);
+  }
+  .search-inner { max-width: 700px; margin: 0 auto; }
+  .search-box {
+    display: flex;
+    align-items: center;
+    background: var(--warm);
+    border: 2px solid rgba(200,90,42,0.15);
+    border-radius: 50px;
+    padding: 10px 18px;
+    gap: 10px;
+    transition: border-color 0.2s;
+  }
+  .search-box:focus-within { border-color: var(--primary); }
+  .search-box input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+  }
+  .search-box input::placeholder { color: var(--text-light); }
+  .search-icon { font-size: 18px; color: var(--text-light); }
+
+  /* ── CATEGORIES ─────────────────────────── */
+  .categories {
+    padding: 28px 20px 0;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .section-sub {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 18px;
+  }
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  .cat-card {
+    border-radius: var(--radius);
+    padding: 18px 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  .cat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .cat-card:hover, .cat-card.active {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+  }
+  .cat-card.active { border-color: currentColor; }
+  .cat-card .cat-emoji { font-size: 32px; display: block; margin-bottom: 8px; }
+  .cat-card .cat-name {
+    font-size: 13px;
+    font-weight: 800;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .cat-card .cat-count {
+    font-size: 11px;
+    font-weight: 600;
+    opacity: 0.7;
+  }
+
+  .cat-doces { background: var(--rose-light); color: var(--rose); }
+  .cat-salgadas { background: var(--green-light); color: var(--green); }
+  .cat-sobremesas { background: var(--purple-light); color: var(--purple); }
+  .cat-rapidas { background: var(--blue-light); color: var(--blue); }
+  .cat-bebidas { background: #FFF3E0; color: var(--primary); }
+
+  .cat-doces:hover, .cat-doces.active { background: var(--rose); color: #fff; }
+  .cat-salgadas:hover, .cat-salgadas.active { background: var(--green); color: #fff; }
+  .cat-sobremesas:hover, .cat-sobremesas.active { background: var(--purple); color: #fff; }
+  .cat-rapidas:hover, .cat-rapidas.active { background: var(--blue); color: #fff; }
+  .cat-bebidas:hover, .cat-bebidas.active { background: var(--primary); color: #fff; }
+
+  /* ── RECIPES SECTION ────────────────────── */
+  .recipes-section {
+    padding: 28px 20px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .recipe-count-badge {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 50px;
+    white-space: nowrap;
+  }
+
+  .recipes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+  }
+
+  .recipe-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    animation: fadeUp 0.4s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .recipe-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .recipe-img {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .recipe-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40px;
+    background: linear-gradient(to top, var(--card-bg), transparent);
+  }
+
+  .recipe-body { padding: 14px 16px 16px; }
+  .recipe-cat-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 50px;
+    margin-bottom: 7px;
+  }
+  .recipe-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .recipe-desc {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin-bottom: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .recipe-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .meta-chip {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 50px;
+    background: var(--warm);
+    color: var(--text-mid);
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  /* tag colors per category */
+  .tag-doces { background: var(--rose-light); color: var(--rose); }
+  .tag-salgadas { background: var(--green-light); color: var(--green); }
+  .tag-sobremesas { background: var(--purple-light); color: var(--purple); }
+  .tag-rapidas { background: var(--blue-light); color: var(--blue); }
+  .tag-bebidas { background: #FFF3E0; color: var(--primary); }
+
+  .img-doces { background: linear-gradient(135deg, #FAEEF2, #F9D6E3); }
+  .img-salgadas { background: linear-gradient(135deg, #EAF3E6, #C8E6C0); }
+  .img-sobremesas { background: linear-gradient(135deg, #F3ECF9, #DBC8F0); }
+  .img-rapidas { background: linear-gradient(135deg, #E6F0FA, #BBDEFB); }
+  .img-bebidas { background: linear-gradient(135deg, #FFF3E0, #FFCC80); }
+
+  /* ── MODAL ───────────────────────────────── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(45,31,20,0.7);
+    backdrop-filter: blur(4px);
+    z-index: 200;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0;
+  }
+  .modal-overlay.open { display: flex; animation: fadeIn 0.2s ease; }
+  @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
+
+  .modal {
+    background: var(--card-bg);
+    border-radius: 28px 28px 0 0;
+    width: 100%;
+    max-width: 680px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.35s cubic-bezier(0.34, 1.4, 0.64, 1);
+  }
+  @keyframes slideUp { from { transform: translateY(100%) } to { transform: translateY(0) } }
+
+  .modal-header {
+    position: sticky;
+    top: 0;
+    background: var(--card-bg);
+    padding: 16px 20px 14px;
+    border-bottom: 1px solid rgba(200,90,42,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+  }
+  .modal-close {
+    width: 36px; height: 36px;
+    background: var(--warm);
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-mid);
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: var(--secondary); color: #fff; }
+  .modal-handle {
+    width: 40px; height: 4px;
+    background: #DDD;
+    border-radius: 4px;
+    position: absolute;
+    top: 10px; left: 50%; transform: translateX(-50%);
+  }
+
+  .modal-body { padding: 20px; }
+  .modal-emoji { font-size: 64px; text-align: center; margin-bottom: 4px; }
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .modal-cat-tag {
+    display: block;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .modal-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .modal-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(200,90,42,0.12);
+  }
+
+  .ingredients-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+  .ingredients-list li {
+    background: var(--warm);
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: var(--text-mid);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ingredients-list li::before { content: '•'; color: var(--primary); font-size: 16px; line-height: 0; }
+
+  .steps-list { list-style: none; margin-bottom: 20px; }
+  .steps-list li {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-text { font-size: 14px; color: var(--text); line-height: 1.6; }
+
+  .tip-box {
+    background: linear-gradient(135deg, #FFF8E8, #FFF3D0);
+    border: 1px solid rgba(212,168,71,0.3);
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #7A5A1A;
+    font-weight: 600;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .tip-icon { font-size: 20px; flex-shrink: 0; }
+
+  /* ── FILTER TABS ─────────────────────────── */
+  .filter-tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .filter-tabs::-webkit-scrollbar { display: none; }
+  .filter-tab {
+    background: var(--warm);
+    border: none;
+    border-radius: 50px;
+    padding: 7px 16px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-mid);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .filter-tab.active, .filter-tab:hover {
+    background: var(--primary);
+    color: #fff;
+  }
+
+  /* ── EMPTY STATE ─────────────────────────── */
+  .empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--text-light);
+    display: none;
+  }
+  .empty-state.show { display: block; }
+  .empty-state .empty-icon { font-size: 56px; margin-bottom: 12px; }
+  .empty-state p { font-size: 15px; font-weight: 600; }
+
+  /* ── FOOTER ──────────────────────────────── */
+  footer {
+    background: #2D1F14;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  footer span { color: var(--gold); }
+
+  /* ── RESPONSIVE ──────────────────────────── */
+  @media (max-width: 720px) {
+    .cat-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .cat-card { padding: 14px 8px; }
+    .cat-card .cat-emoji { font-size: 26px; }
+    .cat-card .cat-name { font-size: 11px; }
+    .recipes-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .recipe-img { height: 110px; font-size: 42px; }
+    .recipe-title { font-size: 14px; }
+    .ingredients-list { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .recipes-grid { grid-template-columns: 1fr; }
+    .hero h2 { font-size: 24px; }
+    .hero-stats { gap: 10px; }
+    .stat { padding: 10px 14px; }
+    .stat-num { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">🥗</div>
+      <div class="logo-text">
+        <h1>Nutri Rosana</h1>
+        <span>Área de Membros</span>
+      </div>
+    </div>
+    <div class="header-badge">⭐ Premium</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">✨ Acesso Exclusivo</div>
+    <h2>Receitas Fit com <em>Whey Protein</em></h2>
+    <p>Mais de 100 receitas nutritivas e deliciosas para transformar sua alimentação com proteínas de alta qualidade.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">100+</span><span class="stat-label">Receitas</span></div>
+      <div class="stat"><span class="stat-num">5</span><span class="stat-label">Categorias</span></div>
+      <div class="stat"><span class="stat-num">🏆</span><span class="stat-label">Premium</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<div class="search-section">
+  <div class="search-inner">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Buscar receita (ex: brownie, shake, frango…)" oninput="filterRecipes()">
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="categories">
+  <div class="section-header">
+    <div>
+      <div class="section-title">Categorias</div>
+      <div class="section-sub">Escolha uma categoria ou explore todas</div>
+    </div>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card cat-doces active" onclick="setCategory('doces')">
+      <span class="cat-emoji">🍰</span>
+      <span class="cat-name">Doces</span>
+      <span class="cat-count">20 receitas</span>
+    </div>
+    <div class="cat-card cat-salgadas" onclick="setCategory('salgadas')">
+      <span class="cat-emoji">🥘</span>
+      <span class="cat-name">Salgadas</span>
+      <span class="cat-count">40 receitas</span>
+    </div>
+    <div class="cat-card cat-sobremesas" onclick="setCategory('sobremesas')">
+      <span class="cat-emoji">🍮</span>
+      <span class="cat-name">Sobremesas</span>
+      <span class="cat-count">20 receitas</span>
+    </div>
+    <div class="cat-card cat-rapidas" onclick="setCategory('rapidas')">
+      <span class="cat-emoji">⚡</span>
+      <span class="cat-name">Rápidas</span>
+      <span class="cat-count">10 receitas</span>
+    </div>
+    <div class="cat-card cat-bebidas" onclick="setCategory('bebidas')">
+      <span class="cat-emoji">🥤</span>
+      <span class="cat-name">Bebidas</span>
+      <span class="cat-count">15 receitas</span>
+    </div>
+  </div>
+</section>
+
+<!-- RECIPES -->
+<section class="recipes-section">
+  <div class="section-header">
+    <div>
+      <div class="section-title" id="sectionTitle">Receitas Doces 🍰</div>
+      <div class="section-sub" id="sectionSub">Delícias fit ricas em proteína</div>
+    </div>
+    <div class="recipe-count-badge tag-doces" id="countBadge">20 receitas</div>
+  </div>
+
+  <div class="filter-tabs" id="filterTabs">
+    <button class="filter-tab active" onclick="setSort('todos', this)">Todas</button>
+    <button class="filter-tab" onclick="setSort('forno', this)">🔥 Forno</button>
+    <button class="filter-tab" onclick="setSort('liquidificador', this)">🌀 Liquidificador</button>
+    <button class="filter-tab" onclick="setSort('microondas', this)">⚡ Micro-ondas</button>
+    <button class="filter-tab" onclick="setSort('gelado', this)">❄️ Gelado</button>
+  </div>
+
+  <br>
+
+  <div class="recipes-grid" id="recipesGrid"></div>
+  <div class="empty-state" id="emptyState">
+    <div class="empty-icon">🔍</div>
+    <p>Nenhuma receita encontrada. Tente outra busca!</p>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-handle"></div>
+      <div style="width:36px"></div>
+      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--text)">Detalhes</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 <span>Nutri Rosana</span> · Área de Membros Premium · Todos os direitos reservados</p>
+</footer>
+
+<script>
+const recipes = [
+  // ── DOCES (20) ──────────────────────────────────────────
+  { id:1, cat:'doces', emoji:'🍌', title:'Bolo de Banana com Whey e Aveia', desc:'Bolo úmido e nutritivo com banana, ovos, whey baunilha e aveia em flocos.', tags:['forno'], time:'30 min', diff:'Fácil',
+    ingredients:['2 bananas maduras','2 ovos','1 scoop whey baunilha','½ xíc aveia em flocos','1 col chá fermento','canela a gosto'],
+    steps:['Amasse as bananas até virar um purê liso.','Adicione os ovos e bata levemente.','Junte whey, aveia e canela; misture bem.','Incorpore o fermento delicadamente.','Despeje em forma untada com óleo de coco.','Asse a 180°C por ~25 minutos.'],
+    tip:'Polvilhe canela extra por cima antes de assar para um aroma irresistível.' },
+
+  { id:2, cat:'doces', emoji:'🥞', title:'Panqueca Doce de Whey com Cacau', desc:'Panqueca proteica com whey chocolate, aveia e cacau. Rápida e deliciosa.', tags:['forno'],time:'15 min',diff:'Fácil',
+    ingredients:['1 ovo','1 scoop whey chocolate','1 col sopa aveia','1 col chá cacau','¼ xíc leite','½ col chá fermento'],
+    steps:['Misture ovo e leite; acrescente whey, aveia e cacau.','Adicione o fermento e mexa suavemente.','Cozinhe em frigideira antiaderente com óleo de coco.','Doure dos dois lados em fogo baixo.'],
+    tip:'Sirva com frutas frescas ou um fio de mel para adoçar naturalmente.' },
+
+  { id:3, cat:'doces', emoji:'🧁', title:'Muffin de Maçã com Whey e Canela', desc:'Muffins fofos com maçã ralada, iogurte natural e whey baunilha.', tags:['forno'],time:'25 min',diff:'Fácil',
+    ingredients:['1 maçã pequena ralada','1 ovo','1 scoop whey baunilha','2 col sopa aveia','1 col sopa iogurte','1 col chá fermento','canela'],
+    steps:['Misture maçã, ovo e iogurte.','Adicione whey, aveia e canela.','Incorpore o fermento por último.','Coloque nas forminhas e asse a 180°C por ~20 min.'],
+    tip:'Use forminhas de silicone para não precisar untar.' },
+
+  { id:4, cat:'doces', emoji:'🍫', title:'Brownie de Whey com Batata Doce', desc:'Brownie úmido feito com purê de batata doce, cacau e whey chocolate.', tags:['forno'],time:'30 min',diff:'Médio',
+    ingredients:['1 xíc purê batata doce','1 scoop whey chocolate','1 ovo','2 col sopa cacau','1 col sopa aveia','1 col chá fermento'],
+    steps:['Misture o purê com o ovo até obter base cremosa.','Acrescente whey, cacau e aveia; mexa bem.','Adicione o fermento e misture com cuidado.','Asse em assadeira untada a 180°C por 20-25 min.','Deixe esfriar antes de cortar.'],
+    tip:'Quanto mais fria a batata doce, mais denso e fudgy fica o brownie.' },
+
+  { id:5, cat:'doces', emoji:'🍓', title:'Torta Fria de Whey com Frutas Vermelhas', desc:'Sobremesa cremosa de iogurte grego, whey e frutas vermelhas com gelatina.', tags:['gelado'],time:'4h geladeira',diff:'Fácil',
+    ingredients:['1 xíc iogurte grego','1 scoop whey baunilha','½ xíc frutas vermelhas','½ col chá gelatina incolor','adoçante a gosto'],
+    steps:['Hidrate a gelatina conforme embalagem.','Bata as frutas no processador.','Misture o purê com iogurte, whey e adoçante.','Adicione a gelatina e mexa bem.','Coloque em taças e leve à geladeira por 4 horas.'],
+    tip:'Decore com morangos frescos e hortelã antes de servir.' },
+
+  { id:6, cat:'doces', emoji:'🥥', title:'Crepioca Doce de Whey com Coco', desc:'Crepioca proteica recheada com coco ralado, sabor tropical e textura incrível.', tags:['forno'],time:'15 min',diff:'Fácil',
+    ingredients:['1 ovo','2 col sopa goma de tapioca','1 scoop whey coco','1 col sopa leite de coco','coco ralado sem açúcar'],
+    steps:['Misture ovo, leite de coco, whey e tapioca até massa homogênea.','Aqueça a frigideira e despeje a massa espalhando bem.','Cozinhe dos dois lados.','Recheie com coco ralado e dobre como crepe.'],
+    tip:'Adicione banana amassada para um recheio ainda mais gostoso.' },
+
+  { id:7, cat:'doces', emoji:'🍮', title:'Pudim Proteico de Baunilha com Whey', desc:'Pudim clássico em banho-maria com whey baunilha, leite e essência natural.', tags:['forno'],time:'35 min',diff:'Médio',
+    ingredients:['1 scoop whey baunilha','150 ml leite','1 ovo','adoçante a gosto','1 col chá essência de baunilha'],
+    steps:['Bata todos os ingredientes no liquidificador.','Despeje em ramequins.','Asse em banho-maria por 30-40 min a 180°C coberto com papel alumínio.','Leve à geladeira por 2 horas antes de desenformar.'],
+    tip:'Sirva gelado com calda de frutas vermelhas.' },
+
+  { id:8, cat:'doces', emoji:'🍪', title:'Cookies Proteicos com Whey e Aveia', desc:'Cookies crocantes com pasta de amendoim, aveia e whey. Prontos em 12 minutos!', tags:['forno'],time:'15 min',diff:'Fácil',
+    ingredients:['1 ovo','1 scoop whey','2 col sopa aveia','1 col sopa pasta amendoim','adoçante a gosto'],
+    steps:['Misture tudo até formar massa moldável.','Modele os cookies e coloque sobre papel manteiga.','Asse por 10-12 minutos a 180°C.','Espere esfriar antes de servir.'],
+    tip:'Adicione nibs de cacau ou gotas de chocolate 70% para um toque especial.' },
+
+  { id:9, cat:'doces', emoji:'🥑', title:'Cremoso de Cacau com Whey e Abacate', desc:'Mousse cremosa de abacate com whey chocolate e cacau. Rico em gorduras boas.', tags:['gelado'],time:'1h gelad.',diff:'Fácil',
+    ingredients:['½ abacate maduro','1 scoop whey chocolate','1 col sopa cacau','1 col sopa leite vegetal','adoçante a gosto'],
+    steps:['Bata todos os ingredientes no processador.','Processe até virar creme aerado.','Leve à geladeira por 1 hora.','Sirva com nibs ou lascas de coco.'],
+    tip:'Quanto mais maduro o abacate, mais cremosa e doce fica a mousse.' },
+
+  { id:10, cat:'doces', emoji:'☕', title:'Bolo de Caneca de Whey com Café', desc:'Bolo proteico feito em 2 minutos no micro-ondas com café e whey.', tags:['microondas'],time:'5 min',diff:'Fácil',
+    ingredients:['1 scoop whey chocolate','1 ovo','1 col sopa café forte','1 col sopa aveia','½ col chá fermento','adoçante a gosto'],
+    steps:['Misture ovo e café na caneca.','Adicione whey, aveia e adoçante; misture bem.','Finalize com o fermento.','Leve ao micro-ondas por 1min30 a 2min.'],
+    tip:'Sirva morno com uma colherada de iogurte grego por cima.' },
+
+  { id:11, cat:'doces', emoji:'🍋', title:'Cheesecake Proteico com Whey e Limão', desc:'Cheesecake leve com cream cheese, whey e raspas de limão siciliano.', tags:['forno'],time:'30 min',diff:'Médio',
+    ingredients:['100g cream cheese light','1 ovo','1 scoop whey baunilha','raspas de limão','suco de ½ limão','adoçante a gosto'],
+    steps:['Misture todos os ingredientes até obter creme liso.','Distribua em forminhas ou ramequins.','Asse a 160°C por ~25 min até firmar.','Deixe esfriar e leve à geladeira por 2h.'],
+    tip:'Decore com raspas de limão extras antes de servir.' },
+
+  { id:12, cat:'doces', emoji:'🍇', title:'Pão Doce Proteico com Whey e Passas', desc:'Pãozinho doce e úmido com farinha de amêndoas, whey e uvas-passas.', tags:['forno'],time:'25 min',diff:'Fácil',
+    ingredients:['1 ovo','1 col sopa leite em pó','1 col sopa farinha de amêndoas','1 scoop whey baunilha','1 col sopa uvas-passas','½ col chá fermento'],
+    steps:['Misture tudo exceto passas e fermento.','Adicione as passas e o fermento por último.','Despeje em forminha de pão ou ramequim.','Asse a 180°C por ~20 min.'],
+    tip:'Acompanhe com café preto ou chá verde.' },
+
+  { id:13, cat:'doces', emoji:'🍓', title:'Tapioca Doce com Whey e Morango', desc:'Tapioca recheada com creme de whey morango e morangos frescos.', tags:['forno'],time:'15 min',diff:'Fácil',
+    ingredients:['2 col sopa goma de tapioca','1 scoop whey morango','1 col sopa água','morangos picados','canela a gosto'],
+    steps:['Misture whey com água até virar pastinha.','Espalhe a tapioca na frigideira e cozinhe até firmar.','Recheie com a mistura de whey e morangos frescos.','Dobre a tapioca, polvilhe canela e sirva.'],
+    tip:'Use morangos bem maduros para mais sabor e doçura natural.' },
+
+  { id:14, cat:'doces', emoji:'🍦', title:'Sorvete Proteico de Whey e Cacau', desc:'Sorvete de banana com whey chocolate e cacau. Dois ingredientes principais!', tags:['gelado'],time:'10 min',diff:'Fácil',
+    ingredients:['1 banana madura congelada','1 scoop whey chocolate','1 col sopa cacau','1 col sopa leite vegetal'],
+    steps:['Bata todos os ingredientes no processador.','Processe até consistência de sorvete cremoso.','Sirva imediatamente ou congele por 1h.'],
+    tip:'Adicione pasta de amendoim ou granola por cima.' },
+
+  { id:15, cat:'doces', emoji:'🍫', title:'Brigadeiro Fit com Whey e Cacau', desc:'Brigadeiro proteico com whey chocolate, cacau e leite em pó desnatado.', tags:['forno'],time:'20 min',diff:'Médio',
+    ingredients:['1 scoop whey chocolate','1 col sopa cacau','2 col sopa leite em pó','2 col sopa água quente','adoçante a gosto'],
+    steps:['Misture tudo em panela pequena.','Leve ao fogo baixo mexendo sempre.','Cozinhe até soltar do fundo.','Modele em bolinhas e passe no cacau.','Leve à geladeira por 30 min.'],
+    tip:'Envolva em coco ralado ou castanhas picadas para variar.' },
+
+  { id:16, cat:'doces', emoji:'🧁', title:'Cupcake de Chocolate com Recheio Proteico', desc:'Cupcake macio com recheio surpresa de pasta de amendoim.', tags:['forno'],time:'25 min',diff:'Médio',
+    ingredients:['1 ovo','1 scoop whey chocolate','1 col sopa cacau','1 col sopa aveia','1 col sopa iogurte','½ col chá fermento','pasta de amendoim'],
+    steps:['Misture tudo exceto a pasta de amendoim.','Despeje metade nas forminhas.','Adicione pasta de amendoim no centro.','Cubra com restante da massa.','Asse a 180°C por ~20 min.'],
+    tip:'O recheio fica cremoso por dentro quando morde!' },
+
+  { id:17, cat:'doces', emoji:'🎃', title:'Torta Proteica de Abóbora com Whey', desc:'Versão fit da pumpkin pie americana com whey e especiarias.', tags:['forno'],time:'30 min',diff:'Médio',
+    ingredients:['½ xíc purê de abóbora','1 scoop whey baunilha','1 ovo','1 col sopa leite vegetal','canela, noz-moscada, cravo','adoçante a gosto','½ col chá fermento'],
+    steps:['Misture tudo até massa uniforme.','Despeje em forminha pequena.','Asse a 180°C por ~25 min.'],
+    tip:'Sirva morna com uma colher de iogurte grego por cima.' },
+
+  { id:18, cat:'doces', emoji:'🍌', title:'Banana Assada com Creme Proteico', desc:'Banana caramelizada no forno com creme de whey baunilha e iogurte.', tags:['forno'],time:'15 min',diff:'Fácil',
+    ingredients:['1 banana','1 scoop whey baunilha ou caramelo','2 col sopa iogurte grego','canela em pó'],
+    steps:['Corte a banana ao meio e asse a 200°C por 10 min.','Misture whey com iogurte até creme espesso.','Sirva a banana com o creme proteico.','Finalize com canela e nozes picadas.'],
+    tip:'Use whey sabor caramelo para um sabor ainda mais especial.' },
+
+  { id:19, cat:'doces', emoji:'🍩', title:'Rosquinha Proteica de Forno com Canela', desc:'Rosquinha assada com aveia, whey e polvilhada com canela.', tags:['forno'],time:'25 min',diff:'Fácil',
+    ingredients:['1 ovo','1 scoop whey baunilha','2 col sopa aveia','1 col sopa iogurte','½ col chá fermento','canela e adoçante'],
+    steps:['Misture tudo até massa grossa e homogênea.','Modele em formato de rosquinha.','Asse a 180°C por ~20 min.','Polvilhe canela com adoçante ao retirar.'],
+    tip:'Mergulhe no café preto ou chá quentinho.' },
+
+  { id:20, cat:'doces', emoji:'🥭', title:'Creme Proteico de Manga com Whey', desc:'Creme denso de manga, banana congelada, whey e iogurte grego.', tags:['gelado'],time:'1h gelad.',diff:'Fácil',
+    ingredients:['½ manga madura','½ banana congelada','1 scoop whey baunilha','2 col sopa iogurte grego','1 col chá chia (opcional)'],
+    steps:['Bata tudo no liquidificador até creme denso.','Se quiser, adicione chia para engrossar.','Sirva em taças individuais.','Leve à geladeira por pelo menos 1h.'],
+    tip:'Ideal como sobremesa leve e refrescante após o treino.' },
+
+  // ── SALGADAS (40) ──────────────────────────────────────
+  { id:21, cat:'salgadas', emoji:'🥗', title:'Panqueca de Espinafre com Frango', desc:'Panqueca proteica de ovos, aveia e espinafre recheada com frango desfiado.', tags:['forno'],time:'20 min',diff:'Fácil',
+    ingredients:['2 ovos','2 col sopa aveia','1 scoop whey neutro','1 xíc espinafre','100g frango desfiado','1 col requeijão light','sal e orégano'],
+    steps:['Bata ovos, aveia, whey e espinafre.','Cozinhe em frigideira até dourar.','Recheie com frango e requeijão.','Enrole e sirva.'],
+    tip:'Pode congelar a massa pronta para usar durante a semana.' },
+
+  { id:22, cat:'salgadas', emoji:'🍳', title:'Omelete de Whey com Legumes', desc:'Omelete proteica com whey neutro, tomate, cebola, abobrinha e especiarias.', tags:['forno'],time:'15 min',diff:'Fácil',
+    ingredients:['2 ovos','1 scoop whey neutro','tomate','cebola','abobrinha','sal, orégano, páprica'],
+    steps:['Bata os ovos com o whey.','Misture os legumes e temperos.','Cozinhe em frigideira até dourar dos dois lados.'],
+    tip:'Adicione queijo ralado por cima para gratinar.' },
+
+  { id:23, cat:'salgadas', emoji:'🥧', title:'Empadão Proteico de Frango com Whey', desc:'Empadão com massa proteica de whey e aveia, recheado com frango cremoso.', tags:['forno'],time:'40 min',diff:'Médio',
+    ingredients:['1 ovo','2 scoops whey neutro','3 col aveia em pó','azeite','150g frango','requeijão','tomate','cebola'],
+    steps:['Misture ingredientes da massa.','Forre uma forma e recheie com frango.','Cubra com restante da massa.','Asse por 25 min a 200°C.'],
+    tip:'Substitua frango por atum ou carne moída.' },
+
+  { id:24, cat:'salgadas', emoji:'🥙', title:'Quibe Assado com Whey', desc:'Quibe clássico assado com trigo, carne moída e whey proteico.', tags:['forno'],time:'45 min',diff:'Médio',
+    ingredients:['1 xíc trigo para quibe','250g carne moída','1 scoop whey neutro','½ cebola','hortelã','sal, pimenta síria'],
+    steps:['Hidrate o trigo em água.','Misture todos os ingredientes.','Asse em assadeira por 30 min a 200°C.'],
+    tip:'Sirva com molho de iogurte e hortelã.' },
+
+  { id:25, cat:'salgadas', emoji:'🍠', title:'Salgadinho de Forno com Batata-Doce', desc:'Bolinhas assadas de batata-doce, whey e farinha de arroz. Crocantes por fora!', tags:['forno'],time:'25 min',diff:'Fácil',
+    ingredients:['1 xíc batata-doce','2 scoops whey neutro','1 col azeite','2 col farinha de arroz','sal e chimichurri'],
+    steps:['Misture tudo até massa firme.','Modele bolinhas.','Asse por 20 min a 180°C.'],
+    tip:'Recheie com cubos de queijo branco ou frango desfiado.' },
+
+  { id:26, cat:'salgadas', emoji:'🥘', title:'Escondidinho com Purê de Couve-flor', desc:'Escondidinho fit com carne moída e purê proteico de couve-flor.', tags:['forno'],time:'30 min',diff:'Médio',
+    ingredients:['200g carne moída','alho, cebola, sal, páprica','1 xíc couve-flor','1 scoop whey neutro','1 col requeijão light'],
+    steps:['Refogue carne com temperos.','Amasse couve-flor com whey e requeijão.','Monte em travessa e leve ao forno 10 min.'],
+    tip:'Pode trocar couve-flor por batata-doce ou mandioquinha.' },
+
+  { id:27, cat:'salgadas', emoji:'🍡', title:'Mini Almôndegas de Frango com Linhaça', desc:'Almôndegas assadas de frango moído com linhaça e whey proteico.', tags:['forno'],time:'20 min',diff:'Fácil',
+    ingredients:['200g frango moído','1 ovo','1 col farinha de linhaça','1 scoop whey neutro','temperos a gosto'],
+    steps:['Misture tudo e modele bolinhas.','Asse na airfryer a 180°C por 15 min.'],
+    tip:'Sirva com molho de iogurte ou chimichurri.' },
+
+  { id:28, cat:'salgadas', emoji:'🥗', title:'Tortinha de Atum com Massa de Grão-de-bico', desc:'Tortinhas proteicas com base de grão-de-bico e recheio cremoso de atum.', tags:['forno'],time:'30 min',diff:'Médio',
+    ingredients:['½ xíc grão-de-bico','1 scoop whey neutro','1 ovo','azeite','atum','requeijão','tomate'],
+    steps:['Bata a massa no processador.','Forre as forminhas e recheie.','Asse a 200°C por 20 min.'],
+    tip:'Pode fazer como quiche ou empadinha.' },
+
+  { id:29, cat:'salgadas', emoji:'🎃', title:'Creme de Abóbora com Gengibre e Whey', desc:'Sopa cremosa de abóbora com gengibre fresco e whey para proteína extra.', tags:['liquidificador'],time:'25 min',diff:'Fácil',
+    ingredients:['2 xícaras abóbora','1 scoop whey neutro','1 col gengibre ralado','cebola, azeite','sal, pimenta'],
+    steps:['Refogue cebola e gengibre.','Cozinhe com abóbora até amolecer.','Bata no liquidificador com whey.','Aqueça e sirva.'],
+    tip:'Finalize com sementes de abóbora tostadas.' },
+
+  { id:30, cat:'salgadas', emoji:'🥬', title:'Wrap de Couve com Ovo Mexido e Whey', desc:'Wrap leve com folha de couve, ovo mexido proteico e legumes frescos.', tags:['forno'],time:'15 min',diff:'Fácil',
+    ingredients:['2 folhas de couve','2 ovos','1 scoop whey neutro','tomate','cenoura','sal, pimenta'],
+    steps:['Escalde a couve rapidamente.','Faça ovos mexidos com whey e legumes.','Recheie e enrole.'],
+    tip:'Substitua couve por alface americana.' },
+
+  { id:31, cat:'salgadas', emoji:'🌽', title:'Cuscuz Salgado com Ovo e Whey', desc:'Cuscuz proteico de milho com whey e ovo mexido temperado.', tags:['forno'],time:'20 min',diff:'Fácil',
+    ingredients:['4 col flocão de milho','1 scoop whey neutro','1 ovo','tomate','orégano, sal'],
+    steps:['Hidrate o flocão e misture o whey.','Leve ao cuscuzeiro.','Sirva com ovo mexido temperado.'],
+    tip:'Adicione queijo ou atum desfiado.' },
+
+  { id:32, cat:'salgadas', emoji:'🥦', title:'Suflê de Legumes com Whey', desc:'Suflê proteico com claras em neve, legumes e queijo ralado gratinado.', tags:['forno'],time:'30 min',diff:'Médio',
+    ingredients:['2 claras','1 gema','1 scoop whey neutro','cenoura','abobrinha','queijo ralado','noz-moscada'],
+    steps:['Bata as claras em neve.','Misture gema, whey, legumes e queijo.','Incorpore as claras delicadamente.','Asse em ramequins por 20 min a 200°C.'],
+    tip:'Sirva imediatamente para manter o suflê alto.' },
+
+  { id:33, cat:'salgadas', emoji:'🍗', title:'Nuggets de Frango com Whey', desc:'Nuggets saudáveis de frango moído com whey, assados na airfryer.', tags:['forno'],time:'20 min',diff:'Fácil',
+    ingredients:['200g frango moído','1 scoop whey neutro','1 col aveia','1 ovo','temperos','farinha para empanar'],
+    steps:['Misture frango, whey, ovos e temperos.','Modele e empane.','Asse na airfryer 15 min a 200°C.'],
+    tip:'Pode congelar os nuggets crus para usar depois.' },
+
+  { id:34, cat:'salgadas', emoji:'🍕', title:'Pizza de Frigideira com Massa de Whey', desc:'Pizza rápida com massa proteica de ovo e whey, recheio à sua escolha.', tags:['forno'],time:'15 min',diff:'Fácil',
+    ingredients:['1 ovo','1 scoop whey neutro','1 col aveia','sal','cobertura a gosto'],
+    steps:['Cozinhe a massa dos dois lados na frigideira.','Adicione cobertura e tampe até o queijo derreter.'],
+    tip:'Pode fazer na airfryer como mini pizza.' },
+
+  { id:35, cat:'salgadas', emoji:'🍚', title:'Bolinho de Arroz Integral com Whey', desc:'Bolinhos assados de arroz integral, ovo, whey e temperos caseiros.', tags:['forno'],time:'30 min',diff:'Fácil',
+    ingredients:['1 xíc arroz integral cozido','1 ovo','1 scoop whey neutro','cebola','farinha de grão-de-bico'],
+    steps:['Misture tudo e modele bolinhos.','Asse a 200°C por 20 min.'],
+    tip:'Sirva com molho de iogurte temperado.' },
+
+  { id:36, cat:'salgadas', emoji:'🧀', title:'Requeijão Proteico Caseiro com Whey', desc:'Requeijão cremoso caseiro feito com whey neutro e amido de milho.', tags:['liquidificador'],time:'10 min',diff:'Fácil',
+    ingredients:['1 xíc leite desnatado','1 scoop whey neutro','1 col amido de milho','1 col azeite','sal e temperos'],
+    steps:['Misture tudo em fogo baixo até engrossar.','Bata com mixer para ficar cremoso.','Guarde em pote de vidro na geladeira.'],
+    tip:'Use como patê, molho de base ou substituto do requeijão.' },
+
+  { id:37, cat:'salgadas', emoji:'🌯', title:'Wrap de Massa de Ovo com Whey', desc:'Wrap proteico feito com ovos batidos com whey, perfeito para marmita.', tags:['forno'],time:'10 min',diff:'Fácil',
+    ingredients:['2 ovos','1 scoop whey neutro','sal','recheio a gosto'],
+    steps:['Bata os ovos com whey e sal.','Cozinhe em frigideira antiaderente.','Recheie, enrole e sirva.'],
+    tip:'Perfeito para levar como lanche salgado na marmita.' },
+
+  { id:38, cat:'salgadas', emoji:'🌾', title:'Farofa Fit com Whey e Aveia', desc:'Farofa nutritiva refogada com cebola, cenoura, aveia e whey neutro.', tags:['forno'],time:'15 min',diff:'Fácil',
+    ingredients:['1 col azeite','½ cebola','2 col aveia','1 scoop whey neutro','cenoura ralada'],
+    steps:['Refogue a cebola no azeite.','Adicione cenoura e aveia.','Misture o whey no final e mexa até dourar.'],
+    tip:'Ótima como acompanhamento de grelhados ou legumes assados.' },
+
+  { id:39, cat:'salgadas', emoji:'🧆', title:'Mini Quiches Sem Massa com Whey', desc:'Quiches proteicas de brócolis e queijo, sem massa, prontas em 25 min.', tags:['forno'],time:'30 min',diff:'Fácil',
+    ingredients:['2 ovos','½ xíc brócolis cozido','1 col requeijão light','1 scoop whey neutro','2 col queijo branco'],
+    steps:['Misture tudo e despeje em forminhas.','Asse por 25 min a 180°C.'],
+    tip:'Pode ser consumido frio ou quente na marmita.' },
+
+  { id:40, cat:'salgadas', emoji:'🍔', title:'Hambúrguer Caseiro com Whey', desc:'Hambúrguer artesanal com carne moída, whey e temperos caseiros.', tags:['forno'],time:'20 min',diff:'Fácil',
+    ingredients:['250g carne moída','1 scoop whey neutro','cebola ralada','alho, sal, pimenta','cheiro-verde'],
+    steps:['Misture tudo até incorporar bem.','Modele os hambúrgueres.','Grelhe na frigideira ou airfryer.'],
+    tip:'Congele os hambúrgueres crus para usar na semana.' },
+
+  { id:41, cat:'salgadas', emoji:'🫓', title:'Tapioca Salgada com Frango Cremoso', desc:'Tapioca recheada com frango desfiado e requeijão proteico.', tags:['forno'],time:'15 min',diff:'Fácil',
+    ingredients:['3 col goma de tapioca','100g frango desfiado','1 scoop whey neutro','1 col requeijão light','sal, orégano'],
+    steps:['Prepare a tapioca na frigideira.','Misture frango, whey e requeijão temperado.','Recheie, dobre e sirva.'],
+    tip:'Varie o recheio com atum ou ovo mexido.' },
+
+  { id:42, cat:'salgadas', emoji:'🥔', title:'Purê de Batata com Whey e Cebolete', desc:'Purê cremoso de batata com whey, manteiga ghee e cebolinha fresca.', tags:['liquidificador'],time:'20 min',diff:'Fácil',
+    ingredients:['2 batatas médias','1 scoop whey neutro','2 col leite','1 col manteiga ghee','sal, cebolinha'],
+    steps:['Cozinhe as batatas.','Misture whey, leite e manteiga nas batatas quentes.','Mexa até purê liso e finalize com cebolinha.'],
+    tip:'Pode substituir batata por inhame ou mandioquinha.' },
+
+  { id:43, cat:'salgadas', emoji:'🥬', title:'Crepioca Salgada com Ricota e Espinafre', desc:'Crepioca recheada com ricota cremosa e espinafre refogado.', tags:['forno'],time:'15 min',diff:'Fácil',
+    ingredients:['1 ovo','1 col goma de tapioca','1 scoop whey neutro','2 col ricota','espinafre refogado','sal, noz-moscada'],
+    steps:['Misture ovo, whey e tapioca.','Cozinhe na frigideira.','Recheie com ricota e espinafre.','Dobre e sirva.'],
+    tip:'Finalize com orégano e fio de azeite por cima.' },
+
+  { id:44, cat:'salgadas', emoji:'🧀', title:'Pão de Queijo Salgado Proteico', desc:'Pão de queijo fit com polvilho, queijo minas e whey proteico.', tags:['forno'],time:'25 min',diff:'Fácil',
+    ingredients:['1 ovo','2 col polvilho azedo','1 col polvilho doce','1 scoop whey neutro','1 col queijo minas','1 col iogurte'],
+    steps:['Misture tudo e modele bolinhas.','Asse por 20 min a 200°C.'],
+    tip:'Funciona bem na airfryer em metade do tempo.' },
+
+  { id:45, cat:'salgadas', emoji:'🧁', title:'Muffin Salgado com Whey e Legumes', desc:'Muffin salgado de aveia com cenoura, pimentão e whey proteico.', tags:['forno'],time:'30 min',diff:'Fácil',
+    ingredients:['2 ovos','1 scoop whey neutro','2 col aveia','1 col fermento','cenoura ralada','pimentão picado'],
+    steps:['Misture todos os ingredientes.','Coloque em forminhas.','Asse por 25 min a 180°C.'],
+    tip:'Ideal para lanches ou pré-treino leve e rápido.' },
+
+  { id:46, cat:'salgadas', emoji:'🥒', title:'Panqueca de Abobrinha com Whey', desc:'Panqueca leve de abobrinha ralada com whey neutro e ervas frescas.', tags:['forno'],time:'15 min',diff:'Fácil',
+    ingredients:['1 ovo','½ xíc abobrinha ralada','1 col aveia','1 scoop whey neutro','sal, ervas'],
+    steps:['Misture tudo até massa homogênea.','Frite como panqueca dos dois lados.'],
+    tip:'Sirva com molho de iogurte ou frango desfiado.' },
+
+  { id:47, cat:'salgadas', emoji:'🐟', title:'Croquete de Atum com Whey', desc:'Croquetes fit de atum com whey, aveia e limão, assados na airfryer.', tags:['forno'],time:'25 min',diff:'Fácil',
+    ingredients:['1 lata atum','1 clara','1 col aveia','1 scoop whey neutro','salsinha, sal, pimenta, limão'],
+    steps:['Misture tudo e modele croquetes.','Asse na airfryer ou forno por 20 min.'],
+    tip:'Sirva com molho mostarda ou maionese de abacate.' },
+
+  { id:48, cat:'salgadas', emoji:'🥦', title:'Sopa Cremosa de Couve-flor com Whey', desc:'Sopa aveludada de couve-flor com whey e caldo de legumes caseiro.', tags:['liquidificador'],time:'25 min',diff:'Fácil',
+    ingredients:['1 xíc couve-flor cozida','½ cebola','1 dente alho','1 scoop whey neutro','1 xíc caldo de legumes','sal, noz-moscada'],
+    steps:['Bata tudo no liquidificador.','Aqueça e sirva quente.'],
+    tip:'Finalize com gergelim ou salsinha fresca.' },
+
+  { id:49, cat:'salgadas', emoji:'🌽', title:'Polenta Proteica com Frango Desfiado', desc:'Polenta cremosa temperada com whey e frango desfiado ao molho.', tags:['forno'],time:'30 min',diff:'Médio',
+    ingredients:['½ xíc fubá','2 xícaras água','1 scoop whey neutro','sal, cúrcuma','100g frango','molho de tomate'],
+    steps:['Cozinhe o fubá com água e sal.','Adicione whey ao finalizar.','Sirva com frango e molho por cima.'],
+    tip:'Substitua frango por cogumelos ou carne moída.' },
+
+  { id:50, cat:'salgadas', emoji:'🍆', title:'Caponata de Berinjela com Whey', desc:'Caponata italiana proteica com berinjela assada e whey neutro.', tags:['forno'],time:'40 min',diff:'Médio',
+    ingredients:['1 berinjela','½ pimentão','½ cebola','azeite','1 scoop whey neutro','vinagre, sal, orégano'],
+    steps:['Asse tudo menos o whey por 30 min.','Misture o whey no final.'],
+    tip:'Sirva com pão proteico ou salada verde.' },
+
+  { id:51, cat:'salgadas', emoji:'🥬', title:'Omelete de Claras com Espinafre', desc:'Omelete leve de claras com espinafre refogado e whey proteico.', tags:['forno'],time:'15 min',diff:'Fácil',
+    ingredients:['3 claras','1 scoop whey neutro','espinafre refogado','cebola, sal, pimenta'],
+    steps:['Bata as claras com whey.','Adicione espinafre e asse na frigideira tampada.'],
+    tip:'Sirva com cogumelos grelhados ou tomate.' },
+
+  { id:52, cat:'salgadas', emoji:'🥦', title:'Gratinado de Chuchu com Whey', desc:'Chuchu ralado gratinado com ovo, whey e queijo ralado.', tags:['forno'],time:'30 min',diff:'Fácil',
+    ingredients:['1 chuchu ralado','1 ovo','1 scoop whey neutro','1 col requeijão','sal, noz-moscada'],
+    steps:['Misture tudo e coloque em ramequim.','Asse 25 min a 200°C.'],
+    tip:'Adicione queijo ralado por cima para gratinar.' },
+
+  { id:53, cat:'salgadas', emoji:'🌿', title:'Bolinhos de Quinoa com Cenoura', desc:'Bolinhos crocantes de quinoa, cenoura ralada e whey com curry.', tags:['forno'],time:'25 min',diff:'Fácil',
+    ingredients:['½ xíc quinoa cozida','½ cenoura ralada','1 ovo','1 scoop whey neutro','sal, curry'],
+    steps:['Misture tudo e modele bolinhos.','Asse 20 min.'],
+    tip:'Ótimo para lanche ou acompanhamento.' },
+
+  { id:54, cat:'salgadas', emoji:'🥦', title:'Arroz de Couve-Flor com Frango e Whey', desc:'Low carb arroz de couve-flor salteado com frango e whey neutro.', tags:['forno'],time:'20 min',diff:'Fácil',
+    ingredients:['1 xíc couve-flor ralada','100g frango','1 scoop whey neutro','alho, cebola, azeite, cheiro-verde'],
+    steps:['Refogue alho e cebola no azeite.','Adicione frango e couve-flor.','Misture whey no final e refogue até dourar.'],
+    tip:'Use tofu grelhado no lugar do frango para versão vegana.' },
+
+  { id:55, cat:'salgadas', emoji:'🫘', title:'Nhoque de Grão-de-Bico e Whey', desc:'Nhoque proteico de grão-de-bico amassado com whey e aveia.', tags:['forno'],time:'30 min',diff:'Médio',
+    ingredients:['½ xíc grão-de-bico amassado','1 scoop whey neutro','1 col aveia','sal'],
+    steps:['Modele rolinhos e corte.','Cozinhe na água fervente até subirem.'],
+    tip:'Congele cru para usar quando quiser.' },
+
+  { id:56, cat:'salgadas', emoji:'🥕', title:'Torta Proteica de Legumes com Whey', desc:'Torta integral de legumes com massa proteica de whey e farinha de arroz.', tags:['forno'],time:'35 min',diff:'Médio',
+    ingredients:['1 ovo','¼ xíc farinha arroz','1 scoop whey neutro','fermento','leite','cenoura, milho, ervilha'],
+    steps:['Misture a massa e adicione os legumes.','Asse por 25 min.'],
+    tip:'Fácil de porcionar e congelar individualmente.' },
+
+  { id:57, cat:'salgadas', emoji:'🍞', title:'Pãozinho de Frigideira com Whey', desc:'Pão proteico feito em frigideira com ovo, aveia e whey. Pronto em 10 min!', tags:['forno'],time:'10 min',diff:'Fácil',
+    ingredients:['1 ovo','1 scoop whey neutro','2 col aveia','1 col fermento','sal'],
+    steps:['Misture tudo até massa homogênea.','Cozinhe em frigideira tampada dos dois lados.'],
+    tip:'Use como sanduíche ou recheado com pasta salgada.' },
+
+  { id:58, cat:'salgadas', emoji:'🫘', title:'Bolinho Assado de Lentilha com Whey', desc:'Bolinhos fit de lentilha cozida amassada com whey e temperos.', tags:['forno'],time:'30 min',diff:'Fácil',
+    ingredients:['½ xíc lentilha cozida','1 scoop whey neutro','cebola, azeite, sal, temperos'],
+    steps:['Amasse tudo até massa uniforme.','Modele e asse por 25 min.'],
+    tip:'Sirva com chutney ou pimenta leve.' },
+
+  { id:59, cat:'salgadas', emoji:'🥒', title:'Rolinho de Abobrinha com Pasta de Atum', desc:'Tiras de abobrinha grelhada recheadas com pasta proteica de atum.', tags:['forno'],time:'20 min',diff:'Fácil',
+    ingredients:['tiras de abobrinha','½ lata atum','1 scoop whey neutro','1 col iogurte','limão, sal'],
+    steps:['Grelhe as tiras de abobrinha.','Misture atum, whey, iogurte e limão.','Recheie as tiras e enrole.'],
+    tip:'Excelente como entrada ou lanche rápido.' },
+
+  { id:60, cat:'salgadas', emoji:'☁️', title:'Pão de Nuvem Proteico (Cloud Bread)', desc:'Cloud bread leve como nuvem com claras em neve, whey e cream cheese.', tags:['forno'],time:'30 min',diff:'Médio',
+    ingredients:['2 ovos','¼ col fermento','1 scoop whey neutro','1 col cream cheese'],
+    steps:['Bata as claras em neve firme.','Misture gemas com whey e cream cheese.','Incorpore as claras delicadamente.','Asse 25 min a 180°C.'],
+    tip:'Use como base para mini sanduíches proteicos.' },
+
+  // ── SOBREMESAS (20) ────────────────────────────────────
+  { id:61, cat:'sobremesas', emoji:'🍫', title:'Brigadeiro Fit com Whey', desc:'Brigadeiro proteico feito com leite em pó, cacau e whey protein.', tags:['forno'],time:'20 min',diff:'Fácil',
+    ingredients:['1½ xíc água','½ xíc leite em pó desnatado','6 col whey chocolate','1 col margarina light','adoçante','2 col cacau em pó'],
+    steps:['Bata água, leite em pó e whey no liquidificador.','Derreta a margarina e adicione a mistura.','Acrescente adoçante e cacau; cozinhe até soltar do fundo.','Modele bolinhas e envolva em granulado.'],
+    tip:'Envolva em castanhas trituradas para mais proteína.' },
+
+  { id:62, cat:'sobremesas', emoji:'🍌', title:'Shake de Banana Proteico', desc:'Shake cremoso de banana congelada com aveia e whey. Perfeito pós-treino.', tags:['liquidificador'],time:'5 min',diff:'Fácil',
+    ingredients:['250ml leite desnatado','2 bananas','30g aveia','1 scoop whey baunilha'],
+    steps:['Congele uma banana previamente em fatias.','Bata leite, aveia, whey e banana fresca.','Adicione a banana congelada e bata novamente.'],
+    tip:'A banana congelada deixa o shake mais espesso e cremoso.' },
+
+  { id:63, cat:'sobremesas', emoji:'🍓', title:'Shake de Morango com Amendoim', desc:'Shake energético de morango, amendoim torrado e whey morango.', tags:['liquidificador'],time:'5 min',diff:'Fácil',
+    ingredients:['30g amendoim torrado','250ml leite desnatado','100g morangos','30g whey morango'],
+    steps:['Adicione todos no liquidificador.','Bata bem, adicionando amendoim aos poucos.'],
+    tip:'Se o liquidificador não for potente, adicione o amendoim gradualmente.' },
+
+  { id:64, cat:'sobremesas', emoji:'🥞', title:'Panqueca de Whey com Calda', desc:'Panqueca proteica com claras de ovo, aveia e calda de whey.', tags:['forno'],time:'15 min',diff:'Fácil',
+    ingredients:['1 scoop whey','10g aveia','3 claras de ovo','Para a calda: 1 scoop whey + ½ xíc água'],
+    steps:['Misture whey, aveia e claras.','Adicione ½ col chá fermento para ficar fofinha.','Cozinhe na frigideira dos dois lados.','Para a calda: misture whey com água.'],
+    tip:'Recheie com frutas, pasta de amendoim ou mel.' },
+
+  { id:65, cat:'sobremesas', emoji:'🍰', title:'Petit Gâteau de Whey (Micro-ondas)', desc:'Petit gâteau proteico pronto em 20 minutos no micro-ondas.', tags:['microondas'],time:'5 min',diff:'Fácil',
+    ingredients:['1 scoop whey chocolate','1 col sopa óleo de coco','água q.b.'],
+    steps:['Misture whey, óleo de coco e água até textura de massa.','Coloque no micro-ondas por 20 min.'],
+    tip:'Sirva com sorvete de banana proteico por cima.' },
+
+  { id:66, cat:'sobremesas', emoji:'🍧', title:'Sorvete Proteico de Pasta de Amendoim', desc:'Sorvete fit com pasta de amendoim, whey e frutas. Congela em 30 min.', tags:['gelado'],time:'30 min',diff:'Fácil',
+    ingredients:['1 col pasta de amendoim','1 scoop whey','2 col sopa água','fruta opcional'],
+    steps:['Em forminha de silicone, coloque a pasta de amendoim.','Misture whey com água até creme.','Despeje sobre a pasta.','Adicione frutas e congele por 30 min.'],
+    tip:'Use morango, uvas ou coco picadinho por cima.' },
+
+  { id:67, cat:'sobremesas', emoji:'🍓', title:'Danoninho Proteico com Morango', desc:'Iogurte proteico cremoso com morangos congelados e bebida vegetal.', tags:['gelado'],time:'5 min',diff:'Fácil',
+    ingredients:['morangos congelados','1 copo bebida vegetal','1 scoop whey'],
+    steps:['Bata morangos, bebida vegetal e whey.','Deixar gelar um pouco antes de servir.'],
+    tip:'Use whey de morango para potencializar o sabor.' },
+
+  { id:68, cat:'sobremesas', emoji:'🍫', title:'Toddynho de Whey', desc:'Chocolate proteico gelado com água de coco e whey chocolate.', tags:['gelado'],time:'5 min',diff:'Fácil',
+    ingredients:['1 scoop whey chocolate','gelo','água de coco'],
+    steps:['Misture whey com água de coco e gelo.','Mexa bem até dissolver completamente.'],
+    tip:'Use whey de chocolate meio amargo para menos açúcar.' },
+
+  { id:69, cat:'sobremesas', emoji:'🍫', title:'Brownie de Whey no Micro-ondas', desc:'Brownie proteico de 3 ingredientes pronto em 3 minutos.', tags:['microondas'],time:'5 min',diff:'Fácil',
+    ingredients:['3 scoops whey','4 ovos','cacau em pó a vontade'],
+    steps:['Misture whey, ovos e cacau bem.','Coloque no micro-ondas por 3 minutos.'],
+    tip:'Adicione nibs de cacau na massa para textura crocante.' },
+
+  { id:70, cat:'sobremesas', emoji:'🍬', title:'Bombom Proteico com Frutas', desc:'Bombom fit com pasta de amendoim, whey e cobertura de chocolate 70%.', tags:['gelado'],time:'30 min',diff:'Médio',
+    ingredients:['1 fruta (uva, abacaxi ou morango)','2 scoops whey','1 barra chocolate 70%','½ xíc pasta de amendoim'],
+    steps:['Misture whey, pasta de amendoim e água.','Faça bolinhas com pedaços de fruta dentro.','Derreta o chocolate e cubra as bolinhas.','Congele até firmar.'],
+    tip:'O recheio de fruta dá um frescor incrível a cada mordida.' },
+
+  { id:71, cat:'sobremesas', emoji:'🍫', title:'Bolo de Chocolate de 1 Minuto', desc:'Bolo proteico de banana, cacau e whey pronto em 1 minuto no micro-ondas.', tags:['microondas'],time:'5 min',diff:'Fácil',
+    ingredients:['1 banana','1 ovo','2 col sopa chocolate em pó','1 col sopa aveia','½ col chá fermento','1 col açúcar demerara','1 scoop whey'],
+    steps:['Amasse a banana e junte todos os ingredientes.','Adicione o fermento por último.','Micro-ondas por 1 a 2 minutos.'],
+    tip:'Sirva com iogurte grego e frutas por cima.' },
+
+  { id:72, cat:'sobremesas', emoji:'🍮', title:'Mousse Proteico de Maracujá', desc:'Mousse cremosa de maracujá com whey baunilha e gelatina incolor.', tags:['gelado'],time:'3h gelad.',diff:'Médio',
+    ingredients:['½ xíc polpa maracujá','1 scoop whey baunilha','2 col creme de leite leve','1 col chá gelatina incolor','adoçante a gosto'],
+    steps:['Misture polpa, whey e creme de leite.','Dissolva a gelatina e adicione à mistura.','Bata com fouet e distribua em potinhos.','Leve à geladeira por 3 horas.'],
+    tip:'Decore com sementes de maracujá para o visual clássico.' },
+
+  { id:73, cat:'sobremesas', emoji:'🫐', title:'Pavê Proteico com Biscoito de Arroz', desc:'Pavê em camadas com creme de whey e biscoito de arroz.', tags:['gelado'],time:'1h gelad.',diff:'Fácil',
+    ingredients:['1 scoop whey baunilha','3 col iogurte natural','2 biscoitos de arroz','1 col sopa leite','essência de baunilha'],
+    steps:['Misture whey, iogurte, leite e essência.','Monte camadas de biscoito e creme.','Repita até completar o recipiente.','Geladeira por 1h para amolecer os biscoitos.'],
+    tip:'Adicione granola entre as camadas para textura extra.' },
+
+  { id:74, cat:'sobremesas', emoji:'🍰', title:'Barra de Cereal Caseira com Whey', desc:'Barra proteica de aveia, pasta de amendoim e whey. Geladeira por 2h.', tags:['gelado'],time:'2h gelad.',diff:'Fácil',
+    ingredients:['1 xíc aveia','¼ xíc pasta amendoim','¼ xíc mel','1 scoop whey','1 col chia'],
+    steps:['Misture tudo até massa compacta.','Espalhe em assadeira com papel manteiga.','Geladeira por 2h.','Corte em barrinhas e guarde refrigerado.'],
+    tip:'Mantenha refrigerado por até 5 dias.' },
+
+  { id:75, cat:'sobremesas', emoji:'🍦', title:'Creme Proteico de Açaí com Whey', desc:'Açaí cremoso com whey e banana congelada. Consistência de sorbet.', tags:['gelado'],time:'10 min',diff:'Fácil',
+    ingredients:['100g polpa açaí congelada','1 scoop whey frutas vermelhas','1 banana congelada','1 col leite de coco'],
+    steps:['Bata tudo no liquidificador até creme grosso.','Sirva em tigela com granola e castanhas.'],
+    tip:'Ideal para os dias quentes pós-treino.' },
+
+  { id:76, cat:'sobremesas', emoji:'🍩', title:'Doce de Leite Proteico com Whey', desc:'Doce de leite fitness feito com whey, leite em pó e óleo de coco.', tags:['forno'],time:'15 min',diff:'Médio',
+    ingredients:['1 scoop whey doce de leite','1 col leite em pó','2 col água quente','1 col chá óleo de coco'],
+    steps:['Misture tudo em panela pequena.','Leve ao fogo baixo mexendo sempre.','Cozinhe até engrossar e desgrudar.','Deixe esfriar em recipiente untado.'],
+    tip:'Pode ser enrolado ou usado como recheio de bolos.' },
+
+  { id:77, cat:'sobremesas', emoji:'🧇', title:'Waffle Doce com Whey e Canela', desc:'Waffle proteico dourado com farinha de arroz, whey e canela.', tags:['forno'],time:'15 min',diff:'Médio',
+    ingredients:['1 ovo','1 scoop whey baunilha','1 col farinha de arroz','1 col chá fermento','¼ xíc leite','canela'],
+    steps:['Misture tudo até massa líquida homogênea.','Despeje na máquina de waffle untada.','Cozinhe por ~3-4 minutos.'],
+    tip:'Sirva com banana, pasta de castanhas ou mel.' },
+
+  { id:78, cat:'sobremesas', emoji:'🍫', title:'Bombom de Castanha de Caju com Whey', desc:'Bombons cremosos de whey, leite em pó e pasta de castanha.', tags:['gelado'],time:'1h gelad.',diff:'Fácil',
+    ingredients:['1 scoop whey chocolate','1 col leite em pó','1 col chá pasta castanha','2 col água quente','cacau para enrolar'],
+    steps:['Misture até massa firme.','Modele em bombons.','Passe no cacau em pó.','Geladeira por 1h.'],
+    tip:'Ficam cremosos por dentro e levemente crocantes por fora.' },
+
+  { id:79, cat:'sobremesas', emoji:'🥥', title:'Cocada Fit com Whey', desc:'Cocada proteica com coco ralado, whey e leite condensado fit.', tags:['forno'],time:'20 min',diff:'Médio',
+    ingredients:['½ xíc coco ralado sem açúcar','1 scoop whey coco','2 col leite condensado fit','1 col leite de coco'],
+    steps:['Misture tudo em panela.','Leve ao fogo baixo até engrossar.','Modele com colher sobre papel manteiga.','Geladeira por 30 min.'],
+    tip:'Pode assar por 10 min para ficar mais firme.' },
+
+  { id:80, cat:'sobremesas', emoji:'🍫', title:'Tapioca de Chocolate com Recheio Proteico', desc:'Tapioca de cacau recheada com creme de whey e pasta de amendoim.', tags:['forno'],time:'15 min',diff:'Fácil',
+    ingredients:['2 col goma tapioca','1 col chá cacau','1 scoop whey chocolate','1 col leite','pasta amendoim ou banana'],
+    steps:['Misture tapioca com cacau.','Espalhe na frigideira e cozinhe até firmar.','Misture whey com leite até creme.','Recheie com creme e pasta de amendoim.'],
+    tip:'Dobre e sirva imediatamente ainda quente.' },
+
+  // ── RÁPIDAS (10) ─────────────────────────────────────
+  { id:81, cat:'rapidas', emoji:'🍫', title:'Barrinha de Proteína Caseira', desc:'Barrinha de pasta de amendoim, mel e whey coberta com chocolate amargo.', tags:['gelado'],time:'2h gelad.',diff:'Fácil',
+    ingredients:['1 xíc pasta amendoim','¼ xíc mel','3 scoops whey','8 quadradinhos chocolate amargo'],
+    steps:['Misture pasta, mel e whey.','Coloque em forma.','Cubra com chocolate derretido.','Geladeira por 2h.','Corte e sirva.'],
+    tip:'Use whey de chocolate para sabor ainda mais intenso.' },
+
+  { id:82, cat:'rapidas', emoji:'⚡', title:'Bolinha de Proteína com Chia', desc:'Bolinhas energéticas de aveia, pasta de amendoim, chia e whey.', tags:['gelado'],time:'2h gelad.',diff:'Fácil',
+    ingredients:['1 xíc aveia','1 xíc pasta amendoim','2 col sopa chia','2 col mel','1 scoop whey','4 quadradinhos chocolate amargo'],
+    steps:['Misture tudo exceto o chocolate.','Faça bolinhas.','Cubra com chocolate derretido.','Geladeira por 2h.'],
+    tip:'Polvilhe canela na massa para aroma especial.' },
+
+  { id:83, cat:'rapidas', emoji:'🥣', title:'Mingau Proteico de Aveia com Cacau', desc:'Mingau quente e nutritivo de aveia, banana, cacau e whey. 5 minutos!', tags:['forno'],time:'10 min',diff:'Fácil',
+    ingredients:['60g aveia','água ou leite','½ banana amassada','1 col sopa cacau','¼ xíc leite','1 scoop whey (opcional)'],
+    steps:['Hidrate a aveia por 10-15 min.','Misture com demais ingredientes no fogo baixo.','Mexa até engrossar.','Desligue e adicione o whey.','Finalize com toppings a gosto.'],
+    tip:'Toppings: frutas, chocolate amargo, pasta de amendoim.' },
+
+  { id:84, cat:'rapidas', emoji:'🫐', title:'Smoothie Bowl Proteico', desc:'Smoothie bowl cremoso de frutas congeladas com whey e toppings variados.', tags:['liquidificador'],time:'10 min',diff:'Fácil',
+    ingredients:['1½ banana congelada','⅔ xíc frutas congeladas','¼ xíc leite','1 scoop whey'],
+    steps:['Bata tudo (menos os toppings) no liquidificador.','Coloque em uma travessa.','Finalize com toppings a gosto.'],
+    tip:'Use morangos congelados com whey de morango para combo perfeito.' },
+
+  { id:85, cat:'rapidas', emoji:'☕', title:'Cappuccino Proteico com Whey', desc:'Cappuccino cremoso de 2 minutos com whey, leite e café forte.', tags:['liquidificador'],time:'5 min',diff:'Fácil',
+    ingredients:['1 scoop whey chocolate ou cappuccino','50ml leite','100ml café forte'],
+    steps:['Misture todos os ingredientes.','Use mixer para deixar mais cremoso.'],
+    tip:'Pode usar qualquer sabor de whey para variar.' },
+
+  { id:86, cat:'rapidas', emoji:'🍦', title:'Picolé Proteico de Iogurte', desc:'Picolé fit de iogurte natural, leite em pó e whey. 8 unidades!', tags:['gelado'],time:'Freezer',diff:'Fácil',
+    ingredients:['500ml iogurte natural','4 col leite em pó desnatado','2 scoops whey'],
+    steps:['Bata tudo no liquidificador.','Coloque em forminhas de picolé.','Leve ao freezer até firmar.'],
+    tip:'Acrescente pedaços de fruta antes de congelar.' },
+
+  { id:87, cat:'rapidas', emoji:'🥤', title:'Vitamina de Morango com Amendoim', desc:'Vitamina energética com morango, amendoim, leite e whey morango.', tags:['liquidificador'],time:'5 min',diff:'Fácil',
+    ingredients:['30g amendoim torrado','250ml leite','100g morangos','30g whey morango'],
+    steps:['Adicione tudo no liquidificador e bata bem.'],
+    tip:'Consuma logo após bater para aproveitar os nutrientes.' },
+
+  { id:88, cat:'rapidas', emoji:'🥑', title:'Creme de Açaí com Banana e Whey', desc:'Açaí cremoso batido com banana e whey. Pronto em 5 minutos!', tags:['liquidificador'],time:'5 min',diff:'Fácil',
+    ingredients:['100g polpa açaí','1 banana congelada','1 scoop whey frutas vermelhas','leite de coco a gosto'],
+    steps:['Bata tudo no liquidificador.','Sirva em tigela com granola por cima.'],
+    tip:'Adicione mel e coco ralado para mais sabor.' },
+
+  { id:89, cat:'rapidas', emoji:'🍫', title:'Mousse Express de Chocolate com Whey', desc:'Mousse rápida de chocolate com iogurte grego e whey. Geladeira por 1h.', tags:['gelado'],time:'1h gelad.',diff:'Fácil',
+    ingredients:['1 pote iogurte grego','1 scoop whey chocolate','1 col sopa cacau','adoçante a gosto'],
+    steps:['Misture tudo com fouet até creme uniforme.','Coloque em potinhos.','Geladeira por 1h.'],
+    tip:'Decore com raspas de chocolate amargo.' },
+
+  { id:90, cat:'rapidas', emoji:'🫙', title:'Iogurte Proteico com Frutas e Granola', desc:'Bowl de iogurte grego com whey morango, frutas e granola crocante.', tags:['gelado'],time:'5 min',diff:'Fácil',
+    ingredients:['1 pote iogurte grego','½ scoop whey morango','frutas picadas','granola ou chia'],
+    steps:['Misture whey com iogurte até creme liso.','Adicione as frutas e mexa levemente.','Finalize com granola ou chia.'],
+    tip:'Use granola caseira para menor teor de açúcar.' },
+
+  // ── BEBIDAS (15) ──────────────────────────────────────
+  { id:91, cat:'bebidas', emoji:'☕', title:'Shake Energético de Café com Whey', desc:'Shake gelado de café, whey baunilha, leite e cacau. Pré-treino perfeito!', tags:['liquidificador'],time:'5 min',diff:'Fácil',
+    ingredients:['1 scoop whey baunilha','100ml café gelado','100ml leite','1 col chá cacau','gelo'],
+    steps:['Prepare o café e deixe esfriar.','Bata tudo no liquidificador por 1-2 min.','Sirva com canela por cima.'],
+    tip:'Adicione canela ou pasta de amendoim para mais energia.' },
+
+  { id:92, cat:'bebidas', emoji:'🍓', title:'Smoothie de Frutas Vermelhas com Whey', desc:'Smoothie cremoso de morango, mirtilo e whey com leite de coco.', tags:['liquidificador'],time:'5 min',diff:'Fácil',
+    ingredients:['1 scoop whey morango','½ xíc morango','½ xíc mirtilo','150ml leite de coco','chia opcional'],
+    steps:['Coloque frutas congeladas no liquidificador.','Adicione whey, líquido e chia.','Bata até cremoso.'],
+    tip:'Hortelã dá um toque extra de frescor.' },
+
+  { id:93, cat:'bebidas', emoji:'🍋', title:'Whey Pink Lemonade', desc:'Limonada rosa com whey limão/framboesa e água com gás. Refrescante!', tags:['gelado'],time:'5 min',diff:'Fácil',
+    ingredients:['1 scoop whey limão ou framboesa','suco 1 limão siciliano','200ml água com gás','gelo, hortelã'],
+    steps:['Dissolva o whey em 100ml de água.','Adicione suco de limão e água com gás.','Sirva com gelo e hortelã.'],
+    tip:'Sirva com rodelas de limão para decorar.' },
+
+  { id:94, cat:'bebidas', emoji:'🍵', title:'Iced Matcha Proteico com Whey', desc:'Matcha gelado com whey baunilha e leite de amêndoas. Energia zen!', tags:['gelado'],time:'5 min',diff:'Fácil',
+    ingredients:['1 scoop whey baunilha','1 col chá matcha','150ml leite de amêndoas','100ml água','gelo'],
+    steps:['Dissolva o matcha em água morna.','Bata com whey, leite e gelo por 1 min.','Sirva com cubos extras de gelo.'],
+    tip:'Use leite de coco para mais cremosidade.' },
+
+  { id:95, cat:'bebidas', emoji:'🍌', title:'Shake de Banana com Canela', desc:'Shake cremoso de banana congelada, whey e canela. Ótimo pós-treino!', tags:['liquidificador'],time:'5 min',diff:'Fácil',
+    ingredients:['1 scoop whey baunilha','1 banana congelada','200ml leite','½ col chá canela'],
+    steps:['Corte a banana congelada.','Bata todos os ingredientes até cremoso.'],
+    tip:'Excelente como café da manhã ou pós-treino.' },
+
+  { id:96, cat:'bebidas', emoji:'🥒', title:'Refresco Verde com Limão e Pepino', desc:'Drink detox de limão, pepino, whey neutro e hortelã. Ultra refrescante!', tags:['liquidificador'],time:'5 min',diff:'Fácil',
+    ingredients:['1 scoop whey neutro','suco 1 limão','3 rodelas pepino','200ml água','hortelã, gelo'],
+    steps:['Bata limão, pepino, whey e água.','Coe se preferir mais leve.','Sirva com gelo e hortelã.'],
+    tip:'Refrescante e hidratante para o verão.' },
+
+  { id:97, cat:'bebidas', emoji:'🍫', title:'Mocaccino Proteico com Whey', desc:'Mocaccino cremoso com whey chocolate, café e leite. Batido com mixer!', tags:['liquidificador'],time:'5 min',diff:'Fácil',
+    ingredients:['1 scoop whey chocolate','1 xíc café quente','100ml leite quente','1 col chá cacau'],
+    steps:['Aqueça o leite.','Misture com whey e cacau.','Adicione o café.','Bata com mixer para espuma.'],
+    tip:'Bata com mixer para espuma cremosa.' },
+
+  { id:98, cat:'bebidas', emoji:'🍍', title:'Shake Tropical de Abacaxi com Coco', desc:'Shake de verão com abacaxi, leite de coco e whey baunilha.', tags:['liquidificador'],time:'5 min',diff:'Fácil',
+    ingredients:['1 scoop whey baunilha','½ xíc abacaxi congelado','150ml leite de coco','gelo'],
+    steps:['Bata tudo no liquidificador até espesso.','Sirva gelado com hortelã ou coco ralado.'],
+    tip:'Polvilhe coco ralado por cima.' },
+
+  { id:99, cat:'bebidas', emoji:'🍊', title:'Chá Gelado com Whey e Frutas Cítricas', desc:'Chá verde gelado com whey neutro e fatias de laranja e limão.', tags:['gelado'],time:'15 min',diff:'Fácil',
+    ingredients:['1 scoop whey neutro','200ml chá verde gelado','rodelas laranja e limão','hortelã, gelo'],
+    steps:['Dissolva o whey no chá gelado.','Adicione frutas, hortelã e gelo.','Deixe 10 min na geladeira antes de servir.'],
+    tip:'Deixe descansar 10 min para os sabores se misturarem.' },
+
+  { id:100, cat:'bebidas', emoji:'🥭', title:'Smoothie de Manga com Maracujá', desc:'Smoothie tropical de manga, maracujá e whey com água de coco.', tags:['liquidificador'],time:'5 min',diff:'Fácil',
+    ingredients:['½ xíc manga','polpa 1 maracujá','1 scoop whey baunilha','150ml água de coco'],
+    steps:['Bata tudo até creme liso.','Sirva imediatamente.','Coe a polpa se preferir liso.'],
+    tip:'Coe se quiser textura mais leve e suave.' },
+
+  { id:101, cat:'bebidas', emoji:'🫐', title:'Drink de Hibisco com Morango e Whey', desc:'Drink antioxidante de hibisco, morangos frescos e whey morango.', tags:['gelado'],time:'10 min',diff:'Fácil',
+    ingredients:['1 xíc chá hibisco','1 scoop whey morango','3 morangos picados','gelo'],
+    steps:['Bata o chá gelado com morangos e whey.','Sirva com gelo.'],
+    tip:'Adicione gotas de limão para equilibrar o sabor.' },
+
+  { id:102, cat:'bebidas', emoji:'🥛', title:'Shake de Aveia com Cacau', desc:'Shake encorpado de aveia, cacau e whey chocolate. Saciante!', tags:['liquidificador'],time:'5 min',diff:'Fácil',
+    ingredients:['1 scoop whey chocolate','1 col aveia','1 col chá cacau','200ml leite vegetal'],
+    steps:['Bata tudo até cremoso.','Sirva gelado.'],
+    tip:'A aveia torna o shake mais saciante e encorpado.' },
+
+  { id:103, cat:'bebidas', emoji:'🍏', title:'Drink Detox de Whey com Gengibre e Maçã', desc:'Drink detox de maçã verde, gengibre e whey neutro. Começo de dia!', tags:['liquidificador'],time:'5 min',diff:'Fácil',
+    ingredients:['1 scoop whey neutro','½ maçã verde','1 col chá gengibre ralado','suco 1 limão','200ml água'],
+    steps:['Bata maçã, gengibre, limão, whey e água.','Coe se quiser mais leve.','Sirva com bastante gelo.'],
+    tip:'Excelente para começar o dia com leveza.' },
+
+  { id:104, cat:'bebidas', emoji:'🥭', title:'Lassi Proteico de Iogurte com Manga', desc:'Lassi indiano proteico com iogurte, manga e cardamomo.', tags:['liquidificador'],time:'5 min',diff:'Fácil',
+    ingredients:['½ pote iogurte natural','1 scoop whey baunilha','½ manga','100ml água','pitada de cardamomo'],
+    steps:['Bata tudo no liquidificador.','Sirva com gelo ou gelado.'],
+    tip:'Inspirado no tradicional indiano, leve e digestivo.' },
+
+  { id:105, cat:'bebidas', emoji:'🫒', title:'Shake Proteico de Beterraba com Limão', desc:'Shake antioxidante de beterraba, limão e whey. Ótimo pré-treino!', tags:['liquidificador'],time:'10 min',diff:'Fácil',
+    ingredients:['1 scoop whey neutro','½ beterraba','suco 1 limão','200ml água','gelo'],
+    steps:['Cozinhe a beterraba se quiser mais suave.','Bata com demais ingredientes.','Sirva com gelo.'],
+    tip:'Rico em antioxidantes, ótimo para pré-treino.' }
+];
+
+const catInfo = {
+  doces:      { title:'Receitas Doces 🍰',     sub:'Delícias fit ricas em proteína',         tag:'tag-doces',     badge:'tag-doces' },
+  salgadas:   { title:'Receitas Salgadas 🥘',  sub:'Refeições proteicas e saborosas',         tag:'tag-salgadas',  badge:'tag-salgadas' },
+  sobremesas: { title:'Sobremesas 🍮',          sub:'Para matar a vontade sem culpa',          tag:'tag-sobremesas',badge:'tag-sobremesas' },
+  rapidas:    { title:'Receitas Rápidas ⚡',    sub:'Prontas em menos de 10 minutos',          tag:'tag-rapidas',   badge:'tag-rapidas' },
+  bebidas:    { title:'Bebidas & Drinks 🥤',    sub:'Shakes, smoothies e drinks proteicos',    tag:'tag-bebidas',   badge:'tag-bebidas' },
+};
+
+let currentCat = 'doces';
+let currentSort = 'todos';
+let currentSearch = '';
+
+function setCategory(cat) {
+  currentCat = cat;
+  currentSort = 'todos';
+  currentSearch = '';
+  document.getElementById('searchInput').value = '';
+  document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+  document.querySelector('.cat-' + cat).classList.add('active');
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector('.filter-tab').classList.add('active');
+  updateUI();
+}
+
+function setSort(sort, el) {
+  currentSort = sort;
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderRecipes();
+}
+
+function filterRecipes() {
+  currentSearch = document.getElementById('searchInput').value.toLowerCase();
+  renderRecipes();
+}
+
+function getFiltered() {
+  return recipes.filter(r => {
+    const matchCat = r.cat === currentCat;
+    const matchSort = currentSort === 'todos' || r.tags.includes(currentSort);
+    const matchSearch = !currentSearch || r.title.toLowerCase().includes(currentSearch) || r.desc.toLowerCase().includes(currentSearch);
+    return matchCat && matchSort && matchSearch;
+  });
+}
+
+function updateUI() {
+  const info = catInfo[currentCat];
+  document.getElementById('sectionTitle').textContent = info.title;
+  document.getElementById('sectionSub').textContent = info.sub;
+  const cnt = getFiltered().length;
+  const badge = document.getElementById('countBadge');
+  badge.textContent = cnt + ' receita' + (cnt !== 1 ? 's' : '');
+  badge.className = 'recipe-count-badge ' + info.badge;
+  renderRecipes();
+}
+
+function renderRecipes() {
+  const list = getFiltered();
+  const grid = document.getElementById('recipesGrid');
+  const empty = document.getElementById('emptyState');
+  grid.innerHTML = '';
+  if (list.length === 0) {
+    empty.classList.add('show');
+    return;
+  }
+  empty.classList.remove('show');
+  const info = catInfo[currentCat];
+  list.forEach((r, i) => {
+    const card = document.createElement('div');
+    card.className = 'recipe-card';
+    card.style.animationDelay = (i * 0.04) + 's';
+    card.onclick = () => openModal(r);
+    card.innerHTML = `
+      <div class="recipe-img img-${r.cat}">${r.emoji}</div>
+      <div class="recipe-body">
+        <span class="recipe-cat-tag ${info.tag}">${r.cat.charAt(0).toUpperCase()+r.cat.slice(1)}</span>
+        <div class="recipe-title">${r.title}</div>
+        <div class="recipe-desc">${r.desc}</div>
+        <div class="recipe-meta">
+          <span class="meta-chip">⏱ ${r.time}</span>
+          <span class="meta-chip">📊 ${r.diff}</span>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+  const cnt = list.length;
+  const badge = document.getElementById('countBadge');
+  badge.textContent = cnt + ' receita' + (cnt !== 1 ? 's' : '');
+}
+
+function openModal(r) {
+  const info = catInfo[r.cat];
+  const stepsHtml = r.steps.map((s,i) => `<li><div class="step-num">${i+1}</div><div class="step-text">${s}</div></li>`).join('');
+  const ingHtml = r.ingredients.map(i => `<li>${i}</li>`).join('');
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-emoji">${r.emoji}</div>
+    <div class="modal-title">${r.title}</div>
+    <span class="modal-cat-tag ${info.tag}">${r.cat.charAt(0).toUpperCase()+r.cat.slice(1)} · ${r.time} · ${r.diff}</span>
+    <div class="modal-section-title">🛒 Ingredientes</div>
+    <ul class="ingredients-list">${ingHtml}</ul>
+    <div class="modal-section-title">👨‍🍳 Modo de Preparo</div>
+    <ul class="steps-list">${stepsHtml}</ul>
+    ${r.tip ? `<div class="tip-box"><span class="tip-icon">💡</span><span><strong>Dica da Nutri:</strong> ${r.tip}</span></div>` : ''}
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+// Init
+updateUI();
+</script>
+</body>
+</html>
